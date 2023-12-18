@@ -37,7 +37,7 @@ INNER JOIN (
     WHERE toDate(issued_at) BETWEEN '{{ Дата.start }}' AND '{{ Дата.end }}'
     AND (test_card = 0 OR test_card is NULL)
     AND state = 'completed'
-    AND smart_split = 1
+    AND smart_split = 1 -- Отвечает за выбор сложного маршрута (0 вылет прямой)
     GROUP BY token
 ) AS e USING token
 WHERE `Страна вылета` = '{{ Страна вылета }}'
