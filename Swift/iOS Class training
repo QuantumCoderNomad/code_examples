@@ -1,0 +1,117 @@
+/*Создайте класс Car в Swift. У автомобиля должны быть следующие свойства и функции:
+ 
+ Свойства:
+     brand (марка автомобиля)
+     model (модель автомобиля)
+     year (год выпуска)
+     color (цвет автомобиля)
+     isRunning (флаг, показывающий, заведен ли двигатель)
+     currentSpeed (текущая скорость)
+
+ Функции:
+     start() - для запуска двигателя
+     stop() - для остановки двигателя
+     drive(speed: Int) - для управления скоростью. Если автомобиль запущен (isRunning == true), то скорость изменяется на указанное значение, иначе выводится сообщение об ошибке.
+     description() - для вывода информации о текущем состоянии автомобиля: марка, модель, год выпуска, цвет, текущая скорость и состояние двигателя.*/
+ 
+ class Car {
+    var brand: String
+    var model: String
+    var year: Int
+    var color: String
+    var isRunning: Bool
+    var currentSpeed: Int
+    
+    init(brand: String, model: String, year: Int, color: String) {
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.color = color
+        self.isRunning = false // по умолчанию двигатель выключен
+        self.currentSpeed = 0 // по умолчанию скорость нулевая
+    }
+    func start() {
+        if !isRunning {
+            isRunning = true
+            print("Engine started")
+        } else {
+            print("Engine is already running")
+        }
+    }
+    func stop() {
+        if isRunning {
+            isRunning = false
+            print("Engine stopped")
+        } else {
+            print("Engine is already stopped")
+        }
+    }
+    func drive(speed: Int) {
+        if isRunning == true {
+            currentSpeed += speed
+            print("Current speed: \(currentSpeed)")
+        } else {
+            print("Engine is not running")
+        }
+    }
+    func description() {
+        print("Brand: \(brand), Model: \(model), Year: \(year), Color: \(color), Current speed: \(currentSpeed)")
+    }
+}
+var myNewCar = Car(brand: "Toyota", model: "Camry", year: 2024, color: "Silver")
+
+
+/*Создайте класс Book в Swift. У книги должны быть следующие свойства и функции:
+
+    Свойства:
+        title (название книги)
+        author (автор книги)
+        yearPublished (год публикации)
+        genre (жанр книги)
+        isAvailable (флаг, показывающий, доступна ли книга в библиотеке)
+
+    Функции:
+        borrow() - для выдачи книги читателю. Если книга доступна (isAvailable == true), то функция должна установить isAvailable в false, иначе вывести сообщение о том, что книга недоступна.
+        returnBook() - для возврата книги в библиотеку. Если книга уже доступна (isAvailable == false), то функция должна установить isAvailable в true, иначе вывести сообщение о том, что книга уже в наличии.
+        description() - для вывода информации о книге: название, автор, год публикации, жанр и доступность.*/
+class Book {
+    var title: String
+    var author: String
+    var yearPublished: Int
+    var genre: String
+    var isAvailable: Bool
+    
+    init(title: String, author: String, yearPublished: Int, genre: String, isAvailable: Bool) {
+        self.title = title
+        self.author = author
+        self.yearPublished = yearPublished
+        self.genre = genre
+        self.isAvailable = isAvailable
+    }
+    
+    func borrow() {
+        if isAvailable {
+            isAvailable = false
+            print("Книга взята в аренду")
+        } else {
+            print("Книга сейчас недоступна")
+        }
+    }
+    
+    func returnBook() {
+        if !isAvailable {
+            isAvailable = true
+            print("Книга возвращена в библиотеку")
+        } else {
+            print("Книга уже в наличии")
+        }
+    }
+    
+    func description() {
+        print("title: \(title), author: \(author), year: \(yearPublished), genre: \(genre), isAvailable: \(isAvailable)")
+    }
+}
+
+var myNewBook = Book(title: "1984", author: "George Orwell", yearPublished: 1949, genre: "Dystopian Fiction", isAvailable: true)
+myNewBook.borrow()
+myNewBook.description()
