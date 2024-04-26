@@ -115,3 +115,21 @@ class Book {
 var myNewBook = Book(title: "1984", author: "George Orwell", yearPublished: 1949, genre: "Dystopian Fiction", isAvailable: true)
 myNewBook.borrow()
 myNewBook.description()
+
+//Задание: Создайте класс "Student" с атрибутами "name" (имя студента), "age" (возраст студента) и "grade" (класс студента). Добавьте функцию "study" для вывода информации о том, какой предмет изучает студент. Создайте экземпляр класса "Student" и вызовите функцию "study" для этого экземпляра.
+class Student {
+    var name: String
+    var age: Int
+    var grade: String
+    
+    init(name: String, age: Int, grade: String) {
+        self.name = name
+        self.age = age
+        self.grade = grade
+    }
+    func study() {
+        print("Student's grade \(grade)")
+    }
+}
+var student1 = Student(name: "Michael", age: 15, grade: "Math")
+student1.study()
