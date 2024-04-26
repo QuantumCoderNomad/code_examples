@@ -1,0 +1,260 @@
+//Задание: Создайте функцию в Swift, которая принимает два целочисленных параметра и возвращает их сумму.
+
+func sumOfTwoFigures(figure1: Int, figure2: Int) -> Int {
+    var themSumIs = figure1 + figure2
+    return themSumIs
+}
+var sumOfsum = sumOfTwoFigures(figure1: 5, figure2: 2)
+print("Sum of two figures is \(sumOfsum)")
+
+//Напишите функцию на Swift, которая принимает на вход строку и возвращает количество гласных букв в этой строке.
+
+func vowelsInLine(input: String) -> (vowels: Int, consonants: Int, error: String?) {
+    let vowels = "aeiou"
+    let consonants = "bcdfghjklmnpqrstvwxyz"
+    
+    var vowelCount = 0
+    var consonantsCount = 0
+    
+    for letter in input.lowercased() {
+        if letter.isLetter {
+            if vowels.contains(letter) {
+                vowelCount += 1
+            } else if consonants.contains(letter) {
+                consonantsCount += 1
+            }
+        } else {
+            return (0, 0, "Invalid character '\(letter)' found in input")
+        }
+    }
+    return (vowelCount, consonantsCount, nil)
+}
+
+var resultOfCount = vowelsInLine(input: "Beautiful")
+if let error = resultOfCount.error {
+    print("Error: \(error)")
+} else {
+    print("Number of vowels: \(resultOfCount.vowels); Number of consonants: \(resultOfCount.consonants)")
+}
+
+//Напишите функцию, которая принимает на вход строку и возвращает количество символов в этой строке.
+
+func lettersOfString(inputOfString: String) -> (Int) {
+    
+    var lettersCount = 0
+    for symbolOfString in inputOfString {
+        lettersCount += 1
+    }
+    return lettersCount
+}
+lettersOfString(inputOfString: "Budapest is a capital of Hungary")
+
+//Напишите функцию, которая принимает на вход массив целых чисел и возвращает сумму всех элементов массива.
+func arrayOfFigures(arrayOfAllFigures: [Int]) -> Int {
+    var sumEmptyArray = 0
+    for sumOfFiguresInArray in arrayOfAllFigures {
+        sumEmptyArray += sumOfFiguresInArray
+    }
+    return sumEmptyArray
+}
+var resultOfAll = arrayOfFigures(arrayOfAllFigures: [25, 34, 72, 88, 31, 22, 15])
+print("Sum of figures in array is \(resultOfAll)")
+
+//Напишите функцию averageOfArray, которая принимает массив целых чисел и возвращает среднее значение всех элементов в массиве (среднее арифметическое).
+func averageOfArray(arrayOfFiguresAvg: [Int]) -> Double {
+    // Считаем сумму внутри массива
+    var emptyArrayOfAvg = 0
+    for sumOfEmptyArrayOfAvg in arrayOfFiguresAvg {
+        emptyArrayOfAvg += sumOfEmptyArrayOfAvg
+    }
+    // Использую функцию count, чтобы посчитать кол-во цифр в массиве
+    let averageArethmetic = Double(emptyArrayOfAvg) / Double(arrayOfFiguresAvg.count)
+    return averageArethmetic
+    
+}
+var resultOfAvg = averageOfArray(arrayOfFiguresAvg: [1, 53, 61, 34, 25, 72, 34, 53])
+print("Result of Average \(resultOfAvg)")
+    
+//Напишите функцию на Swift, которая принимает строку и возвращает обратную ей строку. Например, если на вход подается "hello", то функция должна вернуть "olleh".
+
+func reversedNewWord(inputOfReversed: String) -> String {
+    return String(inputOfReversed.reversed())
+}
+//Метод reversed() возвращает объект типа ReversedCollection<Character>, поэтому вам нужно сконвертировать его обратно в строку
+var inputOfReversed: String = "hello"
+let newCharacter = reversedNewWord(inputOfReversed: inputOfReversed)
+print("\(newCharacter)")
+
+//Напишите функцию на Swift, которая принимает на вход массив строк и возвращает количество строк, длина которых больше заданного значения.
+
+func countStringsLongerThan(array: [String], length: Int) -> Int {
+    var count = 0
+    for str in array {
+        if str.count > length {
+            count += 1
+        }
+    }
+    return count
+}
+
+let inputArray = ["apple", "banana", "orange", "kiwi", "pineapple"]
+let result = countStringsLongerThan(array: inputArray, length: 5)
+print(result)
+
+//Напишите функцию calculateAreaOfRectangle на Swift, которая принимает два параметра типа Double - длину и ширину прямоугольника, и возвращает площадь этого прямоугольника.
+func calculateAreaOfRectangle(lenght: Double, width: Double) -> Double {
+    var area = lenght * width
+    return area
+}
+var resultArea = calculateAreaOfRectangle(lenght: 25.5, width: 45.5)
+print("Your rectangle is \(resultArea)")
+
+//Напишите функцию isPalindrome, которая принимает строку и возвращает булево значение true, если строка является палиндромом (читается одинаково вперед и назад), и false в противном случае.
+func isPalindrome(inputPalindrome: String) -> Bool {
+    let lowercased = inputPalindrome.lowercased()
+    return String(lowercased.reversed()) == lowercased
+}
+isPalindrome(inputPalindrome: "Qazaq")
+
+func isPalindrome1(inputPalindrome1: String) -> Bool {
+    let alphanumeric = inputPalindrome1.lowercased().filter { $0.isLetter || $0.isNumber }
+    return alphanumeric == String(alphanumeric.reversed())
+}
+isPalindrome(inputPalindrome: "Qazaq")
+
+//Напишите функцию, которая принимает на вход два параметра - массив чисел и число, и возвращает количество раз, которое это число встречается в массиве.
+func countFiguresInArray(figureToFind: Int, arrayOfFigures: [Int]) -> Int {
+    var countFigures = 0
+    for figure in arrayOfFigures {
+        if figure == figureToFind {
+            countFigures += 1
+        }
+    }
+    return countFigures
+}
+    countFiguresInArray(figureToFind: 6, arrayOfFigures: [34, 6, 7, 6, 8, 62])
+
+//Напишите функцию, которая принимает на вход строку и возвращает эту же строку, но без повторяющихся символов.
+func strIn(inputString: String) -> String {
+    let stringWithoutSymbols = inputString.lowercased().filter({$0.isLetter})
+    return stringWithoutSymbols
+}
+strIn(inputString: "hello12")
+
+//Напишите функцию, которая принимает на вход два числа и возвращает их сумму, разность, произведение и частное в виде кортежа.
+func mathExample(figureOne: Int, figureTwo: Int) -> (summOf: Int, minusOf: Int, multiOf: Int, delOf: Int) {
+    let summOf = figureOne + figureTwo
+    let minusOf = figureOne - figureTwo
+    let multiOf = figureOne * figureTwo
+    let delOf = figureOne / figureTwo
+    return (summOf, minusOf, multiOf, delOf)
+}
+mathExample(figureOne: 25, figureTwo: 4)
+var resultOfFigures = mathExample(figureOne: 25, figureTwo: 4)
+print("Result of this math is \(resultOfFigures)")
+
+//Напишите функцию в Swift, которая принимает строку и возвращает количество гласных букв в этой строке.
+func countVowelLetters(inputLetters: String) -> (Int, String) {
+    let ourVowels = "aoeiuy"
+    var countVowels = 0
+    var vowelsString = ""
+    for letter in inputLetters {
+        if ourVowels.contains(letter.lowercased()) {
+            countVowels += 1
+            vowelsString.append(letter)
+        }
+    }
+    return (countVowels, vowelsString)
+}
+
+let resultOfVowels = countVowelLetters(inputLetters: "Hello World")
+print("Количество гласных: \(resultOfVowels.0)")
+print("Сами гласные: \(resultOfVowels.1)")
+
+//Напишите функцию, которая принимает массив целых чисел и возвращает сумму всех положительных чисел в массиве.
+func neatFiguresArray(arrayOfFigures: [Int]) -> Int {
+    var sumOfAllFigures = 0
+    for nums in arrayOfFigures {
+        if nums > 0 {
+            sumOfAllFigures += nums
+        }
+    }
+    return sumOfAllFigures
+}
+neatFiguresArray(arrayOfFigures: [25, 34, 55, 2, -3, -65, 23])
+//Напишите функцию, которая принимает на вход массив строк (названий стран) и возвращает строку, содержащую все названия стран, разделенные запятой и пробелом.
+func formatCountryList(countryArray: [String]) -> String {
+    //функция formatCountryList принимает массив стран и использует метод joined для объединения каждого элемента массива в строку, разделенную запятой и пробелом.
+    return countryArray.joined(separator: ", ")//joined(separator: ", ")
+}
+
+let countries = ["Россия", "США", "Канада", "Германия"]
+let formattedString = formatCountryList(countryArray: countries)
+print(formattedString)  // Выведет: "Россия, США, Канада, Германия"
+
+//Напишите функцию, которая принимает массив целых чисел и возвращает сумму всех чисел в массиве.
+func sumOfAllFiguresInArray(figuresInArray: [Int]) -> Int {
+    var sumOfAllNum = 0
+    for numbersNums in figuresInArray {
+        sumOfAllNum += numbersNums
+    }
+    return sumOfAllNum
+}
+var resultOfSumOfAllFigures = sumOfAllFiguresInArray(figuresInArray: [1, 4, 6, 7, 9, 10])
+print("Sum result = \(resultOfSumOfAllFigures)")
+//Напишите функцию на Swift, которая принимает на вход массив целых чисел и возвращает массив, содержащий только уникальные значения из исходного массива.
+func uniqueFigures(unique: [Int]) -> [Int] {
+    return unique.reduce(into: [], { (results, element) in
+        if !results.contains(element) { results.append(element) }
+    })
+}
+uniqueFigures(unique: [1, 2, 3, 3, 4, 5, 1, 3, 6])
+
+/*func uniqueElements(inputArray: [Int]) -> [Int] {
+    var uniqueArray = [Int]()
+    
+    for number in inputArray {
+        if !uniqueArray.contains(number) {
+            uniqueArray.append(number)
+        }
+    }
+    
+    return uniqueArray
+}
+
+let inputArray = [1, 2, 3, 4, 2, 3, 5]
+let result = uniqueElements(inputArray: inputArray)
+print(result) // Выведет [1, 2, 3, 4, 5]*/
+
+//Напишите функцию, которая принимает на вход строку и возвращает количество символов в этой строке.
+/*func countSymbols(symbols: String) -> Int {
+    var countAllSymbols = 0
+    for symbol in symbols {
+        countAllSymbols += 1
+    }
+    return countAllSymbols
+}
+countSymbols(symbols: "Hello, there mate!")
+*/
+func countSymbols(symbols: String) -> Int {
+    return symbols.count
+}
+
+print(countSymbols(symbols: "Hello, there mate!")) // Выведет 17
+
+//В этом примере функция operateOnNumbers принимает два числа a и b, а также замыкание operation с типом (Int, Int) -> Int. 
+Затем в основной части кода это замыкание передается в качестве аргумента для выполнения операции сложения и умножения
+func operateOnNumbers(a: Int, b: Int, operation: (Int, Int) -> Int) -> Int {
+    return operation(a, b)
+}
+
+let addition = operateOnNumbers(a: 5, b: 3, operation: { (x, y) in
+    return x + y
+})
+
+let multiplication = operateOnNumbers(a: 5, b: 3, operation: { (x, y) in
+    return x * y
+})
+
+print(addition) // Выводит 8
+print(multiplication) // Выводит 15
