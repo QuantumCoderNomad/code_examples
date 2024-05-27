@@ -1,0 +1,205 @@
+//Создайте структуру Person, которая будет представлять человека с опциональными свойствами firstName, lastName, middleName и age. Затем создайте массив людей и функцию, которая будет выводить полное имя человека (включая среднее имя, если оно есть) и его возраст. Если какое-то свойство равно nil, используйте значения по умолчанию.
+
+struct Person {
+    let firstName: String?
+    let lastName: String?
+    let middleName: String?
+    let age: Int?
+}
+
+let persons = [
+    Person(firstName: "John", lastName: "Peters", middleName: "Jackson", age: 28),
+    Person(firstName: "Alex", lastName: "Peters", middleName: "Jackson", age: 18),
+    Person(firstName: "Sam", lastName: nil, middleName: "Jackson", age: nil),
+    Person(firstName: nil, lastName: nil, middleName: "Jackson", age: nil)
+]
+
+func personInfo(for persons: [Person]) {
+    for person in persons {
+        let firstName = person.firstName ?? "No attached name!"
+        let lastName = person.lastName ?? "No attached surname!"
+        let middleName = person.middleName ?? ""
+        let personAge = person.age != nil ? String(person.age!) : "No attached age!"
+
+        // Формируем полное имя с учетом среднего имени
+        let fullName: String
+        if middleName.isEmpty {
+            fullName = "\(firstName) \(lastName)"
+        } else {
+            fullName = "\(firstName) \(middleName) \(lastName)"
+        }
+
+        print("Full Name: \(fullName), Age: \(personAge)")
+    }
+}
+
+personInfo(for: persons)
+
+//Создайте структуру Movie, которая будет представлять фильм с опциональными свойствами title, director, releaseYear и rating. Затем создайте массив фильмов и функцию, которая будет выводить информацию о фильмах. Если какое-то свойство равно nil, используйте значения по умолчанию.
+
+struct Movie {
+    let title: String?
+    let director: String?
+    let releaseYear: Int?
+    let rating: Double?
+}
+
+let movies = [
+    Movie(title: "Inception", director: "Christopher Nolan", releaseYear: 2010, rating: 8.8),
+    Movie(title: nil, director: "Steven Spielberg", releaseYear: 1993, rating: 8.9),
+    Movie(title: "Titanic", director: "James Cameron", releaseYear: 1997, rating: nil),
+    Movie(title: nil, director: nil, releaseYear: nil, rating: nil)
+]
+
+func movieInfo(for movies: [Movie]) {
+    for movie in movies {
+        let movieTitle = movie.title ?? "No title!"
+        let director = movie.director ?? "No information about director!"
+        let year = movie.releaseYear != nil ? String(movie.releaseYear!) : "No information about year!"
+        let movieRating = movie.rating != nil ? String(movie.rating!) : "No movie rating!"
+        
+        let fullMovieInfo = movieTitle.isEmpty ? "\(movieTitle), \(year)" : "\(movieTitle), \(director), \(year), \(movieRating)"
+        
+        print("Full info: \(fullMovieInfo)")
+    }
+}
+movieInfo(for: movies)
+
+//Создайте структуру MusicAlbum, которая будет представлять музыкальный альбом с опциональными свойствами title, artist, genre, releaseYear и numberOfTracks. Затем создайте массив альбомов и функцию, которая будет выводить информацию о каждом альбоме. Если какое-то свойство равно nil, используйте значения по умолчанию.
+
+struct MusicAlbum {
+    let title: String?
+    let artist: String?
+    let genre: String?
+    let releaseYear: Int?
+    let numberOfTracks: Int?
+}
+
+let albums = [
+    MusicAlbum(title: "Abbey Road", artist: "The Beatles", genre: "Rock", releaseYear: 1969, numberOfTracks: 17),
+    MusicAlbum(title: nil, artist: "Michael Jackson", genre: "Pop", releaseYear: 1982, numberOfTracks: 9),
+    MusicAlbum(title: "Thriller", artist: "Michael Jackson", genre: nil, releaseYear: 1982, numberOfTracks: nil),
+    MusicAlbum(title: nil, artist: nil, genre: nil, releaseYear: nil, numberOfTracks: nil)
+]
+
+func albumInfo(for albums: [MusicAlbum]) {
+    for album in albums {
+        let albumTitle = album.title ?? "No title!"
+        let albumArtis = album.artist ?? "No artist!"
+        let albumGenre = album.genre ?? "No genre!"
+        let albumYearOfRelease = album.releaseYear != nil ? String(album.releaseYear!) : "No release year!"
+        let albumNumberOfTracks = album.numberOfTracks != nil ? String(album.numberOfTracks!) : "No tracks info!"
+        
+        print("Album title: \(albumTitle), artist: \(albumArtis), genre: \(albumGenre), year of release: \(albumYearOfRelease), tracks: \(albumNumberOfTracks)")
+    }
+}
+
+func albumsInfoCheck(for albums: [MusicAlbum]) -> [String] {
+    var addAlbums = [String]()
+    
+    for album in albums {
+        if (album.title != nil) && (album.artist != nil) && (album.genre != nil) && (album.releaseYear != nil) && (album.numberOfTracks != nil) {
+            addAlbums.append(album.title!)
+            addAlbums.append(album.artist!)
+            addAlbums.append(album.genre!)
+            addAlbums.append(String(album.releaseYear!))
+            addAlbums.append(String(album.numberOfTracks!))
+        } else {
+            print("One if types is empty! Check information")
+        }
+    }
+    return addAlbums
+}
+var albumsAppend = albumsInfoCheck(for: albums)
+print("Here is your info: \(albumsAppend)")
+
+//Напишите функцию, которая принимает два опциональных целых числа и возвращает их сумму, если оба числа имеют значение. Если хотя бы одно из чисел nil, функция должна вернуть nil.
+
+func sumOfTwoOptionalFigures(figure1: Int?, figure2: Int?) -> Int? {
+    if let firstFigure = figure1, let secondFigure = figure2 {
+        return firstFigure + secondFigure
+    } else {
+        return nil
+    }
+}
+sumOfTwoOptionalFigures(figure1: 2, figure2: nil)
+sumOfTwoOptionalFigures(figure1: 5, figure2: 6)
+
+//Напишите функцию, которая принимает опциональное строковое значение и возвращает длину строки, если оно существует. Если значение строки равно nil, функция должна вернуть 0.
+
+func lengthOfOptionalString(newStr: String?) -> Int {
+    if let newStringInRow = newStr?.count {
+        return newStringInRow
+    } else {
+        return 0
+    }
+}
+lengthOfOptionalString(newStr: "New string")
+
+//Напишите функцию, которая принимает массив опциональных целых чисел и возвращает сумму всех чисел в массиве. Если в массиве есть хотя бы одно nil значение, оно должно игнорироваться при вычислении суммы.
+
+func sumOfOptionalIntegers(figuresOfInt: [Int?]) -> Int {
+    var sumOfFigures = 0
+    
+    for figures in figuresOfInt {
+        if let unwrappedNumber = figures {
+            sumOfFigures += unwrappedNumber
+        }
+    }
+    return sumOfFigures
+}
+sumOfOptionalIntegers(figuresOfInt: [6, nil, 3, 5, nil, 7])
+
+//Напишите функцию, которая принимает опциональное целое число и возвращает "Четное", "Нечетное" или "Ноль", в зависимости от значения числа. Если число равно nil, функция должна вернуть "Нет значения".
+
+func checkNumber(figure: Int?) -> String {
+    guard let unwrappedNumber = figure else {
+        return "Нет значения"
+    }
+    if unwrappedNumber == 0 {
+        return "Ноль"
+    } else if unwrappedNumber % 2 == 0 {
+        return "Четное"
+    } else {
+        return "Нечетное"
+    }
+}
+    //У вас есть структура NewPerson, которая представляет собой человека с именем и возрастом. Напишите функцию, которая принимает массив NewPerson? и возвращает средний возраст всех людей в массиве. Если в массиве есть хотя бы один nil элемент или массив пуст, функция должна вернуть nil.
+
+struct NewPerson {
+    let name: String
+    let age: Int
+}
+
+func averageAge(persons: [NewPerson?]) -> Double? {
+    
+    guard !persons.isEmpty else {
+        return nil
+    }
+    var ageOfAllPersons = 0
+    var countOfAllPersons = 0
+    
+    for person in persons {
+        guard let unwrappedPerson = person else {
+            return nil
+        }
+        ageOfAllPersons += unwrappedPerson.age
+        countOfAllPersons += 1
+    }
+    return Double(ageOfAllPersons / countOfAllPersons)
+}
+let per1 = NewPerson(name: "Alice", age: 30)
+let per2 = NewPerson(name: "Bob", age: 25)
+
+//Напишите функцию, которая принимает опциональное целое число и возвращает его значение, если оно существует, или строку "Нет значения" в противном случае.
+    
+func unwrapOptional(_ number: Int?) -> String {
+        if let value = number {
+            return String(value)
+        } else {
+            return "Нет значения"
+        }
+    }
+
+    print(unwrapOptional(42))
+    print(unwrapOptional(nil))
